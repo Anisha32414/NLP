@@ -1,0 +1,112 @@
+Types of Encodings:-
+
+1) One Hot Encoding
+2) Bag of Words
+3) TF-IDF
+
+
+
+
+
+I. ONE HOT ENCODING --> One-hot encoding is a data preprocessing technique that converts categorical variables into binary vectors. 
+                        It creates a new column for each unique category, assigning a 1 if the category is present and a 0 if it is absent.
+
+# Advantages:-
+
+* Prevents False Ordering ---> Many machine learning algorithms incorrectly assume an order or hierarchy in numerical labels (e.g., 1 < 2 < 3). One-hot encoding treats each category independently, avoiding unintended ordinal bias.
+
+* Model Compatibility ---> It is required by algorithms that strictly accept numerical input but cannot natively interpret categorical strings (e.g., linear regression or logistic regression).
+
+* Simplicity ---> It is highly intuitive and easy to implement using libraries like Pandas get_dummies or Scikit-learn OneHotEncoder.
+
+
+# Disadvantage:-
+
+* Curse of Dimensionality ---> If a categorical feature has many unique values, one-hot encoding significantly inflates the dataset's column count, making the model computationally expensive and difficult to train.
+
+* Data Sparsity ---> It generates a sparse matrix where most of the elements are zeros. This can lead to memory overhead and inefficiencies.
+
+* Multicollinearity ---> Keeping all the encoded columns can cause linear dependency between features, which adversely affects models like linear regression (often resolved by dropping one of the categories).
+
+
+
+
+
+
+
+
+II. BAG OF WORDS --> The Bag of Words (BoW) model is a Natural Language Processing (NLP) technique that converts unstructured text into 
+                     fixed-length numerical vectors by counting word frequencies, entirely ignoring grammar and word order.
+
+# Advantages:-
+
+* Simplicity & Interpretability ---> It is highly intuitive, easy to implement, and produces vectors that reveal exactly which words are most prominent in a document.
+
+* Fixed-length Input ---> It elegantly resolves the issue of variable-length texts by standardizing documents into uniform vectors, making them immediately compatible with traditional machine learning models (e.g., Naive Bayes or SVMs).
+
+* Scalability ---> It is computationally lightweight, allowing for quick prototyping and baseline development.
+
+
+# Disadvantages:-
+
+* Loss of Context & Semantics ---> By discarding word order, it treats structurally different sentences identically. For example, "The food is good" and "The food is not good" will yield nearly identical vectors despite opposite meanings.
+
+* High Sparsity ---> As the vocabulary grows, the vectors become filled with zeros, making them inefficient to store and sometimes causing memory constraints.
+
+* Out-of-Vocabulary (OOV) Issue ---> The model cannot process new words that were not present in its initial dictionary.
+
+
+
+
+
+
+
+
+
+III. TF-IDF (Term Frequency-Inverse Document Frequency) --> TF-IDF is a statistical method used to evaluate how important a word is to 
+                                                            a document in a collection or corpus. It scales down the weight of common words 
+                                                            (like "the") and increases the weight of rare, context-rich words (like "pneumonia").
+
+
+### How it Works ??
+
+The score is calculated by multiplying two metrics:-
+
+* Term Frequency (TF) ---> Measures how frequently a term occurs in a specific document. 
+                         Since longer documents may have higher term frequencies, this is often normalized. 
+
+                         The standard calculation is: 
+                              
+                                              TF = {Count of term in document}/{Total words in document}
+
+* Inverse Document Frequency (IDF) ---> Measures how important a term is across the entire corpus. 
+                                      Words common in every document have a low IDF, while rare words have a high IDF. 
+
+                         It is typically calculated as:
+
+                                              IDF = {Total number of documents}/{Number of documents containing the term}
+
+
+
+# Advantages :-
+
+
+* Intuitive and Interpretable ---> Unlike deep learning embeddings, the scores are transparent. You can immediately see which words drive the importance of a document.
+
+* Highlights Key Information ---> By naturally penalizing frequent, generic words, it focuses on context-specific keywords useful for tasks like keyword extraction and document summarization.
+
+* Computationally Efficient ---> It requires minimal processing power and is straightforward to implement using standard data science tools like Python's scikit-learn.
+
+* Language-Independent ---> It relies entirely on statistical frequency rather than complex linguistic rules.
+
+
+# Disadvantages :-
+
+
+* Ignores Word Order and Context ---> It operates on a "bag of words" approach, meaning it treats words as independent variables. It cannot capture the semantic difference between "not good" and "good".
+
+* Cannot Recognize Synonyms ---> It treats words strictly by their exact string matches, failing to recognize that words like "cheap" and "affordable" carry similar meanings.
+
+* High Sparsity ---> In large document datasets, the resulting feature matrix is massive but mostly contains zeros, which can lead to high memory usage.
+
+* Vocabulary Limitations ---> It cannot vectorize new or out-of-vocabulary words that were not part of the initially constructed vocabulary during training.
