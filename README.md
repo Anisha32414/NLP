@@ -30,9 +30,9 @@ A collection of Natural Language Processing (NLP) concepts and implementations, 
 > **Practical Implementation:** Word2Vec implementation is available in **`Word2Vec-Implementation.ipynb`**.
 
 ### Deep Learning for NLP
-- Recurrent Neural Networks (RNN)
-- Long Short-Term Memory (LSTM)
-- Gated Recurrent Unit (GRU)
+- Recurrent Neural Networks (RNN) 
+- Long Short-Term Memory (LSTM RNN) 
+- Bidirectional LSTM
 
 ## Tech Stack
 - Python
