@@ -1,0 +1,74 @@
+1. Recurrent Neural Network (RNN)
+
+* Definition:
+An RNN is a neural network designed for sequential data (text, speech, time series). 
+It processes one input at a time while remembering previous information using a hidden state.
+
+# Advantages:-
+
+* Understands word order.
+* Suitable for sequential data.
+* Better than ANN for NLP tasks.
+
+# Drawbacks:-
+
+* Suffers from the vanishing gradient problem.
+* Cannot remember information from long sequences effectively.
+* Performance decreases for long sentences.
+
+--->> Why LSTM was introduced?
+- To solve the vanishing gradient problem and improve long-term memory.
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+2. Long Short-Term Memory (LSTM)
+
+* Definition:
+LSTM is an improved version of RNN that uses a cell state and gates (Forget, Input, Output) 
+to store and manage long-term information.
+
+# Advantages:-
+
+* Remembers long-term dependencies.
+* Reduces the vanishing gradient problem.
+* Performs better on long text sequences.
+
+# Drawbacks:-
+
+* More computationally expensive than RNN.
+* Slower to train.
+* Processes text in only one direction (past → future).
+
+--->> Why Bidirectional LSTM was introduced?
+- To use both past and future context while making predictions.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+3. Bidirectional LSTM (BiLSTM)
+
+* Definition:
+BiLSTM consists of two LSTMs:
+
+- Forward LSTM (left → right)
+- Backward LSTM (right → left)
+
+The outputs from both are combined to make better predictions.
+
+# Advantages:-
+
+* Uses both previous and future context.
+* Better understanding of sentence meaning.
+* Higher accuracy than a standard LSTM for many NLP tasks.
+
+# Drawbacks:-
+
+* Slower training.
+* Requires more memory.
+* Cannot be used easily for real-time prediction because future words must already be available.
+
+--->> Why Transformers were introduced?
+To process all words in parallel, capture long-range dependencies more effectively using self-attention, and train much faster on large datasets.
